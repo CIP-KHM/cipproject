@@ -1,4 +1,5 @@
 <?php
+session_start();
 $servername = "127.0.0.1";
 $username = "root";
 $password = "";
@@ -21,7 +22,11 @@ echo " 		<html>
 echo "<div class=\"alert alert-info\">
   <strong>Update!</strong> Your Orders will be displayed here.!!!!!!
 </div>";
-
+echo "
+				<form class=\"form-horizontal\" role=\"form\" action=\"logout.php\" method=\"post\">
+			    	<input type=\"submit\" class=\"btn btn-danger\" value=\"Logout\"\">
+			    </form>
+";
 
 $conn->close();
 ?>
