@@ -1,3 +1,19 @@
+<?php
+// Start the session
+session_start();
+      $ip="192.168.1.1";
+      echo $_SESSION["mac"];
+      $mac = shell_exec('arp '.$ip.' | awk \'{print $4}\'');
+      if(!isset($_SESSION["mac"]) && !isset($_SESSION["uname"])) {
+
+      }
+      else
+      {
+        echo '<script type="text/javascript">
+                 window.location = "/php/menu.php"
+            </script>';
+      }
+?>
 <html>
 <head>
 	<title>DB using php</title>
@@ -43,6 +59,7 @@
         <input type="text" class="form-control" name="email" placeholder="Enter Name" required>
       </div>
     </div>
+    
      <?php
     $uname = bin2hex(openssl_random_pseudo_bytes(4));
     $pwd = bin2hex(openssl_random_pseudo_bytes(5));
