@@ -1,4 +1,25 @@
 <?php
+
+	  
+session_start();
+$ip="192.168.1.1";
+$mac = shell_exec('arp '.$ip.' | awk \'{print $4}\'');
+if(!isset($_SESSION["mac"]) && !isset($_SESSION["uname"])) {
+  $_SESSION["mac"] = $mac;
+  $_SESSION["uname"]= $uname;
+}
+else if($_SESSION["mac"]== $mac && $_SESSION["uname"]== $uname)
+{
+	echo '<script type="text/javascript">
+         window.location = "/php/displayorder.php"
+    </script>';
+}
+else
+{
+echo '<script type="text/javascript">
+         window.location = "/php/menu.php"
+    </script>';
+}
 $servername = "127.0.0.1";
 $username = "root";
 $password = "";
@@ -29,6 +50,9 @@ if ($conn->connect_error) {
 
 $sql = "INSERT INTO customers (name, email, password) VALUES ('$name', '$uname', '$pass')";
 if ($conn->query($sql) === TRUE) {
+
+	  
+
 	echo "
 		<div class=\"alert alert-info\">
 		  <strong>Info!</strong> Hello '$uname' .!!!
