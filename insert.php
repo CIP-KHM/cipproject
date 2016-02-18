@@ -11,13 +11,13 @@ if(!isset($_SESSION["mac"]) && !isset($_SESSION["uname"])) {
 else if($_SESSION["mac"]== $mac && $_SESSION["uname"]== $uname)
 {
 	echo '<script type="text/javascript">
-         window.location = "/php/displayorder.php"
+         window.location = "/php/menu.php"
     </script>';
 }
 else
 {
 echo '<script type="text/javascript">
-         window.location = "/php/menu.php"
+         window.location = "/php/index.php"
     </script>';
 }
 $servername = "127.0.0.1";
@@ -46,13 +46,13 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
      die("<div class=\"alert alert-danger\">
   			<strong>Failure: </strong>" . $conn->connect_error . "!!!</div>");
+     echo '<script type="text/javascript">
+         window.location = "/php/index.php"
+    </script>';
 } 
 
 $sql = "INSERT INTO customers (name, email, password) VALUES ('$name', '$uname', '$pass')";
 if ($conn->query($sql) === TRUE) {
-
-	  
-
 	echo "
 		<div class=\"alert alert-info\">
 		  <strong>Info!</strong> Hello '$uname' .!!!
@@ -63,7 +63,13 @@ if ($conn->query($sql) === TRUE) {
 		</div>";
 } else {
 
-	echo "Error: " . $sql;
+	echo "
+		<div class=\"alert alert-danger\">
+		  <strong>Error!</strong> Error in inserting into Database.!!
+		</div>";
+		echo '<script type="text/javascript">
+         window.location = "/php/index.php"
+    </script>';
 }
 echo "</body>
 	</html>";
