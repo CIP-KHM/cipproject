@@ -21,12 +21,17 @@ session_start();
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <style>
+        body{
+    font-family: 'Roboto', sans-serif;
+}
+  </style>
   <script>
     $(function(){
     $("#pass").each(function(index,input) {
         var $input = $(input);
         $('<label class="showpasswordlabel"/>').append(
-            $("<br><input type='checkbox' class='showpasswordcheckbox' />").click(function() {
+            $("<br><input type='checkbox' class='showpasswordcheckbox' />").click(function() {  
                 var change = $(this).is(":checked") ? "text" : "password";
                 var rep = $("<input readonly='readonly' type='" + change + "' />")
                     .attr("id", $input.attr("id"))
