@@ -2,7 +2,6 @@
 // Start the session
 session_start();
       $ip="192.168.1.1";
-      echo $_SESSION["mac"];
       $mac = shell_exec('arp '.$ip.' | awk \'{print $4}\'');
       if(!isset($_SESSION["mac"]) && !isset($_SESSION["uname"])) {
 
