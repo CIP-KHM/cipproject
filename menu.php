@@ -1,5 +1,17 @@
 <?php
 session_start();
+
+
+$ip="192.168.1.1";
+$mac = shell_exec('arp '.$ip.' | awk \'{print $4}\'');
+if(!isset($_SESSION["mac"]) && !isset($_SESSION["uname"])) {
+
+	echo '<script type="text/javascript">
+         window.location = "/php/index.php"
+    </script>';
+}
+
+
 $servername = "127.0.0.1";
 $username = "root";
 $password = "";
@@ -43,6 +55,8 @@ if ($result->num_rows > 0) {
 				    width:75%;
 				    box-sizing: border-box;
 				}
+				body{
+    font-family: 'Roboto', sans-serif;
   			</style>
 			</head>
 			<body>
