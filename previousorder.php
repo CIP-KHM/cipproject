@@ -1,15 +1,4 @@
 <!doctype html>
-<?php
-// Start the session
-session_start();
-      $ip=$_SERVER['REMOTE_ADDR'];
-//      $mac = shell_exec('arp '.$ip.' | awk \'{print $4}\'');
-      if(!isset($_SESSION["ip"]) && !isset($_SESSION["uname"])) {
-	      echo '<script type="text/javascript">
-	                 window.location = "login.php"
-	            </script>';
-      }
-?>
 <html class="fixed">
 	<head>
 
@@ -70,14 +59,13 @@ session_start();
 					<div id="userbox" class="userbox">
 						<a href="#" data-toggle="dropdown">
 							<figure class="profile-picture">
-								<img src="assets/images/!logged-user.jpg" alt=<?php echo $_SESSION["uname"] ?> class="img-circle" data-lock-picture="assets/images/!logged-user.jpg" />
+								<img src="assets/images/!logged-user.jpg" alt="Joseph Doe" class="img-circle" data-lock-picture="assets/images/!logged-user.jpg" />
 							</figure>
-							<div class="profile-info" data-lock-name=<?php echo $_SESSION["uname"] ?> data-lock-email=<?php echo $_SESSION["uname"] ?>>
-								<span class="name">Welcome[<b><?php echo $_SESSION["uname"] ?></b>]</span>
+							<div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
+								<span class="name">USERNAME[SESSION]</span>
 								<span class="role">User</span>
-								
 							</div>
-							
+			
 							<i class="fa custom-caret"></i>
 						</a>
 			
@@ -85,7 +73,7 @@ session_start();
 							<ul class="list-unstyled">
 								<li class="divider"></li>
 								<li>
-									<a role="menuitem" tabindex="-1" href="#" data-lock-screen="true"><i class="fa fa-lock"></i> Change Username</a>
+									<a role="menuitem" tabindex="-1" href="#" data-lock-screen="true"><i class="fa fa-lock"></i> Lock Screen</a>
 								</li>
 								<li>
 									<a role="menuitem" tabindex="-1" href="logout.php"><i class="fa fa-power-off"></i> Logout</a>
@@ -150,86 +138,59 @@ session_start();
 
 					<!-- start: page -->
 					<div class="row">
-						<div class="col-md-6 col-lg-12 col-xl-6">
+						<div class="col-md-12">
 							<section class="panel">
-								<div class="panel-body">
-									<div class="row">
-										<div class="col-lg-8">
-											<div class="chart-data-selector" id="salesSelectorWrapper">
-												<h2>
-													Current Token on process: 
-													<strong>TN06</strong>
-												</h2></br></br>
-												<h3>You will be served "" if you order now!</h3>
-												Scroll below to add an order.</br>
-												New Orders get new Tokens Automatically.</br>
-												Note: Predictable Token Number may vary from the token shown above.</br>
-											</div>
+									<header class="panel-heading">
+										<div class="panel-actions">
+											<a href="#" class="fa fa-caret-down"></a>
+											<a href="#" class="fa fa-times"></a>
 										</div>
-										<div class="col-lg-4 text-center">
-											<h2 class="panel-title mt-md">Your Serving</h2>
-												<div class="circular-bar">
-													<div class="circular-bar-chart" data-percent="75" data-plugin-options='{ "barColor": "#2BAAB1", "delay": 600 }'>
-														<strong>Serving queue</strong>
-														<label><span class="percent">75</span>%</label>
-													</div>
-												</div>
+						
+										<h2 class="panel-title">Previous Orders</h2>
+									</header>
+									<div class="panel-body">
+										<div class="table-responsive">
+											<table class="table table-bordered mb-none">
+												<thead>
+													<tr>
+														<th>S.no</th>
+														<th>Items</th>
+														<th>Date</th>
+														<th>Price</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>1</td>
+														<td>Mark</td>
+														<td>Otto</td>
+														<td>@mdo</td>
+													</tr>
+													<tr>
+														<td>2</td>
+														<td>Jacob</td>
+														<td>Thornton</td>
+														<td>@fat</td>
+													</tr>
+													<tr>
+														<td>3</td>
+														<td>Larry</td>
+														<td>the Bird</td>
+														<td>@twitter</td>
+													</tr>
+												</tbody>
+											</table>
 										</div>
 									</div>
-								</div>
-						</section>
+								</section>
 						</div>
-						<div class="col-md-6 col-lg-12 col-xl-6">
-							<div class="row">
-								<div class="col-md-12 col-lg-6 col-xl-6">
-									<section class="panel panel-featured-left panel-featured-tertiary">
-										<div class="panel-body">
-											<div class="widget-summary">
-												<div class="widget-summary-col widget-summary-col-icon">
-													<div class="summary-icon bg-tertiary">
-														<i class="fa fa-shopping-cart"></i>
-													</div>
-												</div>
-												<div class="widget-summary-col">
-													<div class="summary">
-														<h4 class="title">Previous Orders</h4>
-														<div class="info">
-															<strong class="amount">5</strong>
-														</div>
-													</div>
-													<div class="summary-footer">
-														<a class="text-muted text-uppercase" href="previousorder.php">(view all)</a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</section>
-								</div>
-								<div class="col-md-12 col-lg-6 col-xl-6">
-									<section class="panel panel-featured-left panel-featured-quartenary">
-										<div class="panel-body">
-											<div class="widget-summary">
-												<div class="widget-summary-col widget-summary-col-icon">
-													<div class="summary-icon bg-quartenary">
-														<i class="fa fa-cutlery"></i>
-													</div>
-												</div>
-												<div class="widget-summary-col">
-													<div class="summary">
-														<h4 class="title">Add Order</h4>
-														<div class="info">
-															<strong class="amount">Order Now!</strong>
-														</div>
-													</div>
-													<div class="summary-footer">
-														<a class="text-muted text-uppercase" href="addorder.php">(get me there!)</a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</section>
-								</div>
-							</div>
+					</div>
+					<div class="row">
+					</br>
+						<div class="col-md-3">
+							<button onclick="location.href='index.php'" type="button" class="mb-xs mt-xs mr-xs btn btn-danger btn-block">
+							<i class="fa fa-times"></i>Go Back
+							</button>
 						</div>
 					</div>
 			<!-- end: page -->
